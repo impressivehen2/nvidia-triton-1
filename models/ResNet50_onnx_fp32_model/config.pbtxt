@@ -1,0 +1,26 @@
+name: "ResNet50_onnx_fp32_model"
+platform: "onnxruntime_onnx"
+max_batch_size: 2
+
+input [ 
+    {
+        name: "input_3"
+        data_type: TYPE_FP32
+        dims: [ 224, 224, 3 ]
+    }
+]
+
+output [
+    {
+        name: "predictions"
+        data_type: TYPE_FP32
+        dims: [ 1000 ]
+    }
+]
+
+instance_group [
+  {
+    count: 4
+    kind: KIND_AUTO
+  }
+]
